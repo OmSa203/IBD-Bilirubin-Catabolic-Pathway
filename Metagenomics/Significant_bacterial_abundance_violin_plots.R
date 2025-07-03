@@ -7,12 +7,15 @@ library(ggpubr)
 library(ggforce)  # For jittered points
 library(patchwork)
 }
+
 # Clear environment
 rm(list=ls())
 
+#============producing a violin plot for each bacteira that correlate with one of the metabolites ==========
+
 
 # Read the correlation data to get unique bacteria
-correlations <- read.csv("sterco-correllation.csv")
+correlations <- read.csv("sterco-correlation.csv")
 unique_bacteria <- unique(correlations$bacteria)
 
 # Read the RNA data and metadata
@@ -111,7 +114,7 @@ plot_bacteria_abundance <- function(bacteria_name) {
   
   return(p)
 }
-setwd("P:/Omer/Bilirubin & IDB/drafts for paper/5.2.2025/last/Paper/ster_plots")
+
 # Generate plots for bacteria with significant differences
 plots <- lapply(unique_bacteria, plot_bacteria_abundance)
 
@@ -124,30 +127,24 @@ print(successful_plots)
 
 
 
-#==================saving the all the graphs together =============
-
-# Load required libraries
-library(tidyverse)
-library(ggplot2)
-library(reshape2)
-library(stats)
-library(ggpubr)
-library(ggforce)  # For jittered points
-library(patchwork)  # For combining plots
+#==================Violin plot for the specific bacteria that corralate with stercobilin =============
 
 # Clear environment
 rm(list=ls())
 
-# Set working directory
-setwd("P:/Omer/Bilirubin & IDB/drafts for paper/5.2.2025/last/Paper")
+# Define the bacteria of interest
+bacteria_list <- c(
+  "Blautia_sp._SG-772",
+  "Lachnospiraceae_bacterium_UBA4711",
+  "Lachnospiraceae_bacterium_UBA5902",
+  "Lachnospiraceae_bacterium_UBA6452",
+  "Oscillibacter_sp."
+)
 
-# Read the correlation data to get unique bacteria
-correlations <- read.csv("corr with ster.csv")
-unique_bacteria <- unique(correlations$bacteria)
 
 # Read the RNA data and metadata
-rna_data <- read.csv("16RNA_results_renamed%.csv")
-metadata <- read.csv("NEWmetadata.csv")
+rna_data <- read.csv("16RNA_results_renamed.csv")
+metadata <- read.csv("Metadata.csv")
 
 # Fix column names
 colnames(rna_data) <- sub("X","", colnames(rna_data))
@@ -233,140 +230,6 @@ plot_bacteria_abundance <- function(bacteria_name) {
   )
   
   return(p)
-}
-
-# Generate plots for bacteria with significant differences
-plots <- lapply(unique_bacteria, plot_bacteria_abundance)
-
-# Remove NULL values (non-significant plots)
-plots <- plots[!sapply(plots, is.null)]
-
-# Calculate number of rows and columns for the grid
-n_plots <- length(plots)
-n_cols <- ceiling(sqrt(n_plots))
-n_rows <- ceiling(n_plots/n_cols)
-
-# Combine all plots using patchwork
-combined_plot <- wrap_plots(plots, ncol = n_cols)
-setwd("P:/Omer/Bilirubin & IDB/drafts for paper/5.2.2025/last/Paper/ster_plots/ster unique")
-# Save the combined plot
-ggsave(
-  filename = "combined_abundance_violin_plots.png",
-  plot = combined_plot,
-  width = 3 * n_cols,
-  height = 3 * n_rows,
-  dpi = 300
-)
-
-# Print names of successfully plotted bacteria
-successful_plots <- unique_bacteria[!sapply(plots, is.null)]
-cat("Bacteria with significant abundance differences:\n")
-print(successful_plots)
-
-# Print information about the combined plot
-cat(sprintf("\nCreated combined plot with %d significant bacteria\n", n_plots))
-cat(sprintf("Grid dimensions: %d rows x %d columns\n", n_rows, n_cols))
-
-
-#======================# Load required libraries
-library(tidyverse)
-library(ggplot2)
-library(reshape2)
-library(stats)
-library(ggpubr)
-library(ggforce)
-library(patchwork)
-
-# Clear environment
-rm(list=ls())
-
-# Define the bacteria of interest
-bacteria_list <- c(
-  "Blautia_sp._SG-772",
-  "Lachnospiraceae_bacterium_UBA4711",
-  "Lachnospiraceae_bacterium_UBA5902",
-  "Lachnospiraceae_bacterium_UBA6452",
-  "Oscillibacter_sp."
-)
-
-# Read the RNA data and metadata
-rna_data <- read.csv("16RNA_results_renamed%.csv")
-metadata <- read.csv("NEWmetadata.csv")
-
-# Fix column names
-colnames(rna_data) <- sub("X","", colnames(rna_data))
-
-# Same functions as before, just modified to handle these specific bacteria
-get_anova_pvalue <- function(bacteria_name) {
-  # [Previous function code remains the same]
-}
-
-plot_bacteria_abundance <- function(bacteria_name) {
-  # [Previous function code remains the same]
-}
-
-# Generate plots only for our specific bacteria
-plots <- lapply(bacteria_list, plot_bacteria_abundance)
-
-# Remove NULL values (non-significant plots)
-plots <- plots[!sapply(plots, is.null)]
-
-# Arrange plots in a 2x3 grid (which will accommodate 5 plots nicely)
-combined_plot <- wrap_plots(plots, ncol = 2)
-
-# Save the combined plot
-ggsave(
-  filename = "combined_abundance_violin_plots.png",
-  plot = combined_plot,
-  width = 8,  # Adjusted for 2 columns
-  height = 12, # Adjusted to accommodate all plots
-  dpi = 300
-)
-
-# Print names of successfully plotted bacteria
-successful_plots <- bacteria_list[!sapply(plots, is.null)]
-cat("Bacteria with significant abundance differences:\n")
-print(successful_plots)
-
-#=====================
-
-
-# Load required libraries
-library(tidyverse)
-library(ggplot2)
-library(reshape2)
-library(stats)
-library(ggpubr)
-library(ggforce)
-library(patchwork)
-
-# Clear environment
-rm(list=ls())
-
-# Define the bacteria of interest
-bacteria_list <- c(
-  "Blautia_sp._SG-772",
-  "Lachnospiraceae_bacterium_UBA4711",
-  "Lachnospiraceae_bacterium_UBA5902",
-  "Lachnospiraceae_bacterium_UBA6452",
-  "Oscillibacter_sp."
-)
-
-setwd("P:/Omer/Bilirubin & IDB/drafts for paper/5.2.2025/last/Paper")
-# Read the RNA data and metadata
-rna_data <- read.csv("16RNA_results_renamed%.csv")
-metadata <- read.csv("NEWmetadata.csv")
-
-# Fix column names
-colnames(rna_data) <- sub("X","", colnames(rna_data))
-
-# Same functions as before, just modified to handle these specific bacteria
-get_anova_pvalue <- function(bacteria_name) {
-  # [Previous function code remains the same]
-}
-
-plot_bacteria_abundance <- function(bacteria_name) {
-  # [Previous function code remains the same]
 }
 
 # Generate plots only for our specific bacteria
