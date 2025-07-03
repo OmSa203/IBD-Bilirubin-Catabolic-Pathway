@@ -5,7 +5,7 @@ library("readxl")
 library("plyr")
 
 
-#=========For Negative=============
+#=========Cleanup the Quantification Table from MZmine=============
 
 
 #set the R working directory
@@ -70,7 +70,7 @@ write.csv(Sample_clean,"Data__after_Cleanup.csv", row.names = FALSE)
 #===============
 
 RNA_MD <- read.csv("IBD_samples_for_16rna.csv")
-RNA_data <- read.csv("16RNA_Abundance_Results.csv")
+RNA_data <- read.csv("IBD_Samples_for_16RNA-Clinical_Info.csv")
 colnames(RNA_data) <- sub("X","",colnames(RNA_data))
 #Selecting the columns with samples
 MS_Data <- select(Sample_clean, matches("mzML"))
