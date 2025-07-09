@@ -1,0 +1,29 @@
+Category,Characteristic,HC (n=49),UC (n=31),CD (n=39),P-value
+Demographics,,,,,
+,Age (years; mean ± SD),34.2 ± 9.8,36.5 ± 11.2,36.8 ± 10.5,0.42
+,Age range,19-58,22-70,20-65,-
+,Male n (%),25 (51.0),16 (51.6),13 (33.3),0.18
+,Female n (%),24 (49.0),15 (48.4),26 (66.7),-
+Clinical Characteristics,,,,,
+,Disease Duration (years; mean ± SD),N/A,8.2 ± 6.4,9.1 ± 7.2,0.56
+,Current Smoker n (%),7 (14.3),3 (9.7),5 (12.8),0.84
+,Former Smoker n (%),5 (10.2),4 (12.9),6 (15.4),-
+,Never Smoker n (%),37 (75.5),24 (77.4),28 (71.8),-
+Disease Activity,,,,,
+,Mayo Score (mean ± SD),N/A,6.6 ± 2.8,N/A,-
+,Calprotectin ?g/g (mean ± SD),N/A,285 ± 156,312 ± 178,0.48
+Dietary Habits,,,,,
+,Special Diet n (%),12 (24.5),15 (48.4),22 (56.4),<0.01
+,Gluten-free n (%),3 (6.1),5 (16.1),8 (20.5),0.03
+,Lactose-free n (%),4 (8.2),6 (19.4),9 (23.1),0.02
+,Other dietary restrictions n (%),5 (10.2),4 (12.9),5 (12.8),0.89
+Supplements,,,,,
+,Any Dietary Supplements n (%),15 (30.6),18 (58.1),25 (64.1),<0.01
+,Vitamin D n (%),8 (16.3),12 (38.7),15 (38.5),0.02
+,Iron n (%),3 (6.1),8 (25.8),12 (30.8),<0.01
+,Multiple vitamins n (%),7 (14.3),9 (29.0),11 (28.2),0.15
+Medications,,,,,
+,Any IBD medication n (%),N/A,28 (90.3),35 (89.7),0.93
+,Biologics n (%),N/A,12 (38.7),18 (46.2),0.54
+,Immunomodulators n (%),N/A,15 (48.4),21 (53.8),0.65
+,5-ASA n (%),N/A,22 (71.0),15 (38.5),<0.01
