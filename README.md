@@ -1,4 +1,4 @@
-# IBD - Bilirubin-Catabolic Pathway
+# IBD - Bilirubin Catabolic Pathway
 
 
 ## Metagenomics
