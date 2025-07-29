@@ -6,6 +6,7 @@ library(vegan)
 library(ggplot2)
 library(dplyr)
 library(dunn.test)
+library(ggpubr)
 #----Functions----
 
 # --- Check for matching sample names ---
@@ -204,7 +205,21 @@ plot_alpha_richness <- function(richness_metrics_data, grouping_var, save_plots 
       legend.position = "none", # Adjust legend as needed
       plot.title = element_text(hjust = 0.5) # Center the plot title
     ) +
-    scale_fill_manual(values = c("Healthy" = "#6d8abf", "CD" = "#ccbb9c", "UC" = "#ebe8e1"))
+    scale_fill_manual(
+      values = c("Healthy" = "#6d8abf", "CD" = "#ccbb9c", "UC" = "#ebe8e1"))+
+    # Add significance bracket
+    stat_compare_means(
+      comparisons = list(
+        c("Healthy", "CD"),
+        c("Healthy", "UC")
+        #c("CD", "UC")
+      ),
+      method = "wilcox.test",
+      p.adjust.method = "bonferroni",
+      label = "p.signif" ,# This will convert p-values to stars
+      hide.ns = FALSE  # This will remove non-significant annotations 
+      #bracket = TRUE  # This removes the brackets
+    )
   
   # Plot for Chao1 Richness
   p_chao1 <- ggplot(alpha_df, aes_string(x = grouping_variable, y = "Chao1", fill = grouping_variable)) +
@@ -219,7 +234,21 @@ plot_alpha_richness <- function(richness_metrics_data, grouping_var, save_plots 
       legend.position = "none", # Adjust legend as needed
       plot.title = element_text(hjust = 0.5) # Center the plot title
     ) +
-    scale_fill_manual(values = c("Healthy" = "#6d8abf", "CD" = "#ccbb9c", "UC" = "#ebe8e1"))
+    scale_fill_manual(
+      values = c("Healthy" = "#6d8abf", "CD" = "#ccbb9c", "UC" = "#ebe8e1"))+
+    # Add significance bracket
+    stat_compare_means(
+      comparisons = list(
+        c("Healthy", "CD"),
+        c("Healthy", "UC")
+        #c("CD", "UC")
+      ),
+      method = "wilcox.test",
+      p.adjust.method = "bonferroni",
+      label = "p.signif" ,# This will convert p-values to stars
+      hide.ns = FALSE  # This will remove non-significant annotations 
+      #bracket = FALSE  # This removes the brackets
+    )
   
   # Plot for ACE Richness
   p_ace <- ggplot(alpha_df, aes_string(x = grouping_variable, y = "ACE", fill = grouping_variable)) +
@@ -234,7 +263,22 @@ plot_alpha_richness <- function(richness_metrics_data, grouping_var, save_plots 
       legend.position = "none", # Adjust legend as needed
       plot.title = element_text(hjust = 0.5) # Center the plot title
     ) +
-    scale_fill_manual(values = c("Healthy" = "#6d8abf", "CD" = "#ccbb9c", "UC" = "#ebe8e1"))
+    scale_fill_manual(
+      values = c("Healthy" = "#6d8abf", "CD" = "#ccbb9c", "UC" = "#ebe8e1")) +
+    # Add significance bracket
+    stat_compare_means(
+      comparisons = list(
+        c("Healthy", "CD"),
+        c("Healthy", "UC")
+        #c("CD", "UC")
+      ),
+      method = "wilcox.test",
+      p.adjust.method = "bonferroni",
+      label = "p.signif" ,# This will convert p-values to stars
+      hide.ns = FALSE  # This will remove non-significant annotations 
+      #bracket = TRUE  # This removes the brackets
+    )
+  
   
   # --- Automatic Saving Logic ---
   if (save_plots) {
@@ -277,7 +321,7 @@ plot_alpha_richness <- function(richness_metrics_data, grouping_var, save_plots 
 # If your samples are rows and bacteria are columns, you'll need to transpose:
 # otu_data <- t(otu_data)
 
-otu_data <- read.csv("Abundance_Results.csv", row.names = 1, header = TRUE)
+otu_data <- read.csv("Abundance_Results%.csv", row.names = 1, header = TRUE)
 colnames(otu_data) <- sub("X","", colnames(otu_data)) #If needed 
 
 # --- Import Metadata ---
@@ -369,3 +413,4 @@ richness_stats_and_report(alpha_df,grouping_variable)
 
 #----Visualision----
 plot_alpha_richness(alpha_df,grouping_variable,TRUE)
+
