@@ -7,7 +7,7 @@ library(scales)
 rm(list=ls())
 
 # Read the data
-data <- read.csv("16RNA_results_renamed.csv")
+data <- read.csv("Abundance_Results.csv")
 metadata <- read.csv("NEWmetadata.csv")
 
 # Process metadata 

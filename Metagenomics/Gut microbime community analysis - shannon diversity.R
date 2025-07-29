@@ -10,7 +10,7 @@ library(dplyr)
 rm(list=ls())
 
 # Read and prepare data
-data <- read.csv("16RNA_results_renamed.csv")
+data <- read.csv("Abundance_Results.csv")
 metadata <- read.csv("Metadata.csv")
 # Fix column names
 colnames(data) <- sub("X","", colnames(data))

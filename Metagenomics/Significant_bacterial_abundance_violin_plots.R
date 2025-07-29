@@ -19,7 +19,7 @@ correlations <- read.csv("sterco-correlation.csv")
 unique_bacteria <- unique(correlations$bacteria)
 
 # Read the RNA data and metadata
-rna_data <- read.csv("16RNA_results_renamed.csv")
+rna_data <- read.csv("Abundance_Results.csv")
 metadata <- read.csv("Metadata.csv")
 
 # Fix column names

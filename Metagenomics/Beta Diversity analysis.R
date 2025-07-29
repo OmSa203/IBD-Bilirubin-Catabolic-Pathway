@@ -18,7 +18,7 @@ set.seed(123)
 # ======= DATA IMPORT AND PREPARATION =======
 
 # Import the bacterial abundance data
-microbial_data <- read.csv("16RNA_results_renamed.csv", row.names = 1)
+microbial_data <- read.csv("Abundance_Results.csv", row.names = 1)
 # Fix column names
 colnames(microbial_data) <- sub("X","", colnames(microbial_data))
 colnames(microbial_data) <- sub(".mzML$","", colnames(microbial_data))

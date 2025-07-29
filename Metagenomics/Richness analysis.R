@@ -277,7 +277,7 @@ plot_alpha_richness <- function(richness_metrics_data, grouping_var, save_plots 
 # If your samples are rows and bacteria are columns, you'll need to transpose:
 # otu_data <- t(otu_data)
 
-otu_data <- read.csv("16RNA_results_renamed%.csv", row.names = 1, header = TRUE)
+otu_data <- read.csv("Abundance_Results.csv", row.names = 1, header = TRUE)
 colnames(otu_data) <- sub("X","", colnames(otu_data)) #If needed 
 
 # --- Import Metadata ---
