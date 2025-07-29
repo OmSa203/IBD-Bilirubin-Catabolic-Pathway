@@ -7,7 +7,7 @@ library(reshape2)
 rm(list=ls())
 
 # Read the data
-rna_data <- read.csv("16RNA_results_renamed.csv")
+rna_data <- read.csv("Abundance_Results.csv")
 metab_data <- read.csv("Data__after_Cleanup.csv")
 bilirubin_analogs <- read.csv("Bilirubin's analogs.csv")
 
