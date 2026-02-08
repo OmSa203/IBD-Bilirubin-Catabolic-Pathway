@@ -4,7 +4,8 @@ Supplementary repository for "Changes in Bilirubin Metabolism Correlate with Inf
 
 ## About
 
-This repository contains supplementary data, analysis code, and resources accompanying our research paper on bilirubin metabolism and Inflammatory Bowel Disease (IBD).
+This repository contains supplementary data, analysis code, 
+and resources accompanying our research paper on bilirubin metabolism and Inflammatory Bowel Disease (IBD).
 
 ## Citation
 
@@ -29,7 +30,9 @@ IDO:
 ├── supplementary/    # Supplementary materials
 └── protocols/        # Experimental protocols
 ```
-
+## Raw data files
+All the mass spectrometry data used in the preparation of this manuscript are publicly available at the MassIVE repository 
+at the UCSD Center for Computational Mass Spectrometry website (massive.ucsd.edu). ftp://MSV000098724@massive-ftp.ucsd.edu
 
 ## Questions?
 
